@@ -13,13 +13,15 @@ export class NavbarComponent implements OnInit {
   }
 
   goToHome() {
-
+   // this.router.navigate(['/', 'home']);
   }
 
   goToBooking() {
+    //this.router.navigate(['/', 'booking']);
   }
 
   goToAdmin() {
+    //this.router.navigate(['/', 'admin']);
 
   }
 
