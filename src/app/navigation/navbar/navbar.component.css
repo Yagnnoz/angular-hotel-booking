@@ -2,7 +2,7 @@
     display:flex;
     justify-content: left;
     padding: 20px;
-    background-color: #5C100A;
+    background-color: #7A150F;
 }
 
 li {
@@ -10,6 +10,7 @@ li {
     margin-left: 20px;
     margin-right: 20px;
     color:white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Bright';
     font-size: large;
+    font-style: oblique;
 }
