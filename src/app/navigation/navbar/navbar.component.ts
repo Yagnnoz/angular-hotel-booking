@@ -12,17 +12,4 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goToHome() {
-   // this.router.navigate(['/', 'home']);
-  }
-
-  goToBooking() {
-    //this.router.navigate(['/', 'booking']);
-  }
-
-  goToAdmin() {
-    //this.router.navigate(['/', 'admin']);
-
-  }
-
 }

@@ -9,9 +9,10 @@ import { BookingComponent } from './booking/booking.component';
 import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
-  { path: 'Home', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'booking', component: BookingComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 
 ]
 
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     AdminComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
