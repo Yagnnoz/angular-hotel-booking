@@ -1,3 +1,4 @@
+import { createMayBeForwardRefExpression } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Room, status } from './room';
 
@@ -34,6 +35,7 @@ export class HotelService {
         this.freeRooms.filter(r => r !== this.rooms[i]);
       }
       console.log(`room nr: ${this.rooms[i].id} created. State: ${this.rooms[i].state}`);
+      this.updateFreeRooms();
     }
   }
 
@@ -75,7 +77,6 @@ export class HotelService {
         freeRooms.push(this.rooms[i]);
       }
     }
-
     //randomly select one of the free rooms
     selectedIndex = Math.floor(Math.random() * freeRooms.length - 1);
     this.bookRoom(freeRooms[selectedIndex].id);
@@ -86,9 +87,19 @@ export class HotelService {
     for (i = 0; i < this.rooms.length; i++) {
       if (this.rooms[i].id == id && this.rooms[i].state === status.free) {
         this.rooms[i].state = status.booked;
-        this.freeRooms.filter(r => r !== this.rooms[i]);
+        this.updateFreeRooms();
         alert(`successfully booked room nr ${this.rooms[i].id}`);
         break;
+      }
+    }
+  }
+
+  private updateFreeRooms(): void {
+    let i: number = 0;
+    this.freeRooms = [];
+    for (i = 0; i < this.rooms.length; i++) {
+      if (this.rooms[i].state === status.free) {
+        this.freeRooms.push(this.rooms[i]);
       }
     }
   }
