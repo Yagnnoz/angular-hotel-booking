@@ -1,1 +1,14 @@
 <button (click)="bookRandomRoom()">GIVE RANDOM ROOM</button>
+<h2>All free rooms</h2>
+<table>
+    <tr>
+        <th>Roomnumber</th>
+        <th>Location</th>
+        <th>State</th>
+    </tr>
+    <tr *ngFor="let room of this.hotelService.freeRooms">
+        <td>{{room.id}}</td>
+        <td>{{room.location}}</td>
+        <td>{{room.state}}</td>
+    </tr>
+</table>

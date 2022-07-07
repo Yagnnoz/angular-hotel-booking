@@ -6,6 +6,7 @@ import { Room, status } from './room';
 })
 export class HotelService {
   rooms: Room[] = [];
+  freeRooms: Room[] = [];
 
   constructor() {
     this.initRooms();
@@ -18,6 +19,7 @@ export class HotelService {
     for (i = 0; i < 25; i++) {
       this.rooms.push({ id: (i + 1), location: "", state: status.free })
     }
+    this.freeRooms = this.rooms;
   }
 
   private randomizeBooking(): void {
@@ -29,6 +31,7 @@ export class HotelService {
         this.rooms[i].state = status.free;
       } else {
         this.rooms[i].state = status.booked;
+        this.freeRooms.filter(r => r !== this.rooms[i]);
       }
       console.log(`room nr: ${this.rooms[i].id} created. State: ${this.rooms[i].state}`);
     }
@@ -39,14 +42,7 @@ export class HotelService {
   }
 
   getFreeRooms(): number {
-    let result: number = 0;
-    let i: number = 0;
-    for (i = 0; i < this.rooms.length; i++) {
-      if (this.rooms[i].state === status.free) {
-        result += 1;
-      }
-    }
-    return result;
+    return this.freeRooms.length;
   }
 
   getBookedRooms(): number {
@@ -90,6 +86,7 @@ export class HotelService {
     for (i = 0; i < this.rooms.length; i++) {
       if (this.rooms[i].id == id && this.rooms[i].state === status.free) {
         this.rooms[i].state = status.booked;
+        this.freeRooms.filter(r => r !== this.rooms[i]);
         alert(`successfully booked room nr ${this.rooms[i].id}`);
         break;
       }
