@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Hotel } from 'src/app/data/hotel';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +7,6 @@ import { Hotel } from 'src/app/data/hotel';
 })
 export class NavbarComponent implements OnInit {
 
-  hotel: Hotel = new Hotel();
   constructor() { }
 
   ngOnInit(): void {
