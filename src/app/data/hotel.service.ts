@@ -1,3 +1,4 @@
+import { state } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { Room, status } from './room';
 
@@ -91,7 +92,7 @@ export class HotelService {
   }
 
   //books a specific room
-   bookRoom(id: number): void {
+  bookRoom(id: number): void {
     let i: number = 0;
     for (i = 0; i < this.rooms.length; i++) {
       if (this.rooms[i].id == id && this.rooms[i].state === status.free) {
@@ -111,6 +112,17 @@ export class HotelService {
       if (this.rooms[i].state === status.free) {
         this.freeRooms.push(this.rooms[i]);
       }
+    }
+  }
+
+  switchRoomState(id: number): void {
+    if (this.rooms[id - 1]) {
+      if (this.rooms[id - 1].state === status.booked) {
+        this.rooms[id - 1].state = status.free;
+      } else {
+        this.rooms[id - 1].state = status.booked;
+      }
+      this.updateFreeRooms();
     }
   }
 }

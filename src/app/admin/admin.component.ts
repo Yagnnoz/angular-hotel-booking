@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HotelService } from '../data/hotel.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(public hotelService: HotelService) { }
 
   ngOnInit(): void {
+  }
+
+  switchRoomState(id: number) {
+    this.hotelService.switchRoomState(id);
   }
 
 }
