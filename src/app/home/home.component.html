@@ -1,7 +1,10 @@
 <h2>All Rooms</h2>
 <div>
+
     <label>Rooms total: {{this.hotelService.getRoomAmount()}}</label>
     <br>
     <label>Rooms free: {{this.hotelService.getFreeRooms()}}</label>
     <br>
+    <label>Quota filled: {{this.hotelService.getBookedQuota()}}%</label>
+
 </div>

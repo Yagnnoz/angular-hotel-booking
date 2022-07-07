@@ -33,4 +33,37 @@ export class HotelService {
       console.log(`room nr: ${this.rooms[i].id} created. State: ${this.rooms[i].state}`);
     }
   }
+
+  getRoomAmount(): number {
+    return this.rooms.length;
+  }
+
+  getFreeRooms(): number {
+    let result: number = 0;
+    let i: number = 0;
+    for (i = 0; i < this.rooms.length; i++) {
+      if (this.rooms[i].state === status.free) {
+        result += 1;
+      }
+    }
+    return result;
+  }
+
+  getBookedRooms(): number {
+    let result: number = 0;
+    let i: number = 0;
+    for (i = 0; i < this.rooms.length; i++) {
+      if (this.rooms[i].state === status.booked) {
+        result += 1;
+      }
+    }
+    return result;
+  }
+
+  getBookedQuota(): number {
+    let result: number = 0;
+    result = (this.getBookedRooms() / this.rooms.length) * 100;
+    return result;
+
+  }
 }

@@ -8,7 +8,7 @@ import { HotelService } from '../data/hotel.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private hotelService: HotelService) { }
+  constructor(public hotelService: HotelService) { }
 
   ngOnInit(): void {
   }
