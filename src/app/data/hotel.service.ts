@@ -18,7 +18,7 @@ export class HotelService {
     this.rooms = [];
 
     for (i = 0; i < 25; i++) {
-      this.rooms.push({ id: (i + 1), location: "", state: status.free })
+      this.rooms.push({ id: (i + 1), location: "EG - terasse - no smoker", state: status.free })
     }
     this.freeRooms = this.rooms;
   }
