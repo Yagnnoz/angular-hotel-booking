@@ -62,7 +62,7 @@ export class HotelService {
 
   getBookedQuota(): number {
     let result: number = 0;
-    result = (this.getBookedRooms() / this.rooms.length) * 100;
+    result = Number(((this.getBookedRooms() / this.rooms.length) * 100).toFixed(2));
     return result;
 
   }
