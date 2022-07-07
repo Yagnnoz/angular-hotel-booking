@@ -14,3 +14,11 @@ li {
     font-size: large;
     font-style: oblique;
 }
+
+a{
+    color: white;
+    
+}
+a:active{
+    background-color: black;
+}
