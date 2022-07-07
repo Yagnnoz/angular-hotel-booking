@@ -6,6 +6,6 @@ export interface Room {
 
 
 export enum status {
-    booked,
-    free
+    booked = "Booked",
+    free = "Free"
 }
