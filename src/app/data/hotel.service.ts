@@ -64,6 +64,35 @@ export class HotelService {
     let result: number = 0;
     result = Number(((this.getBookedRooms() / this.rooms.length) * 100).toFixed(2));
     return result;
+  }
 
+  bookRandomRoom(): void {
+    let result: number = 0;
+    //select random room of free rooms, set it to booked and return ID.
+    let freeRooms: Room[] = [];
+    let selectedIndex: number;
+
+    //get all free rooms
+    let i: number = 0;
+    for (i = 0; i < this.rooms.length; i++) {
+      if (this.rooms[i].state === status.free) {
+        freeRooms.push(this.rooms[i]);
+      }
+    }
+
+    //randomly select one of the free rooms
+    selectedIndex = Math.floor(Math.random() * freeRooms.length - 1);
+    this.bookRoom(freeRooms[selectedIndex].id);
+  }
+
+  private bookRoom(id: number): void {
+    let i: number = 0;
+    for (i = 0; i < this.rooms.length; i++) {
+      if (this.rooms[i].id == id && this.rooms[i].state === status.free) {
+        this.rooms[i].state = status.booked;
+        alert(`successfully booked room nr ${this.rooms[i].id}`);
+        break;
+      }
+    }
   }
 }
