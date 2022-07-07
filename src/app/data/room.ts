@@ -5,7 +5,7 @@ export interface Room {
 }
 
 
-enum status {
+export enum status {
     booked,
     free
 }
