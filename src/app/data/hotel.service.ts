@@ -91,7 +91,7 @@ export class HotelService {
   }
 
   //books a specific room
-  private bookRoom(id: number): void {
+   bookRoom(id: number): void {
     let i: number = 0;
     for (i = 0; i < this.rooms.length; i++) {
       if (this.rooms[i].id == id && this.rooms[i].state === status.free) {
