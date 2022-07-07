@@ -1,4 +1,3 @@
-import { createMayBeForwardRefExpression } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Room, status } from './room';
 
@@ -13,9 +12,10 @@ export class HotelService {
     this.initRooms();
     this.randomizeBooking();
   }
-
+  //creates 25 rooms for the hotel
   private initRooms(): void {
     let i: number;
+    this.rooms = [];
 
     for (i = 0; i < 25; i++) {
       this.rooms.push({ id: (i + 1), location: "", state: status.free })
@@ -23,11 +23,14 @@ export class HotelService {
     this.freeRooms = this.rooms;
   }
 
+  //sets a random amout of rooms to booked
   private randomizeBooking(): void {
     let rnd: number = 0;
     let i: number;
     for (i = 0; i < this.rooms.length; i++) {
+      //get random number
       rnd = Math.floor(Math.random() * 6);
+      // if rnd is equal than free, else room is booked
       if (rnd % 2 == 0) {
         this.rooms[i].state = status.free;
       } else {
@@ -38,15 +41,18 @@ export class HotelService {
       this.updateFreeRooms();
     }
   }
-
+  //returns amount of rooms
   getRoomAmount(): number {
     return this.rooms.length;
   }
 
+  //returns amount of free rooms
   getFreeRooms(): number {
     return this.freeRooms.length;
   }
 
+
+  //returns amount of booked rooms
   getBookedRooms(): number {
     let result: number = 0;
     let i: number = 0;
@@ -58,12 +64,14 @@ export class HotelService {
     return result;
   }
 
+  //calculates how many rooms are booked in % and returns it 
   getBookedQuota(): number {
     let result: number = 0;
     result = Number(((this.getBookedRooms() / this.rooms.length) * 100).toFixed(2));
     return result;
   }
 
+  //will select a random free room and set it to booked
   bookRandomRoom(): void {
     let result: number = 0;
     //select random room of free rooms, set it to booked and return ID.
@@ -82,6 +90,7 @@ export class HotelService {
     this.bookRoom(freeRooms[selectedIndex].id);
   }
 
+  //books a specific room
   private bookRoom(id: number): void {
     let i: number = 0;
     for (i = 0; i < this.rooms.length; i++) {
@@ -94,6 +103,7 @@ export class HotelService {
     }
   }
 
+  //updates array of free rooms to display on booking
   private updateFreeRooms(): void {
     let i: number = 0;
     this.freeRooms = [];
