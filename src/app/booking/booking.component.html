@@ -4,13 +4,11 @@
     <tr>
         <th>RoomNr</th>
         <th>Location</th>
-        <th>State</th>
         <th></th>
     </tr>
     <tr *ngFor="let room of this.hotelService.freeRooms">
         <td>{{room.id}}</td>
         <td class="location">{{room.location}}</td>
-        <td>{{room.state}}</td>
         <button type="button" class="book" title="book room" (click)="this.hotelService.bookRoom(room.id)">Get</button>
     </tr>
 </table>
