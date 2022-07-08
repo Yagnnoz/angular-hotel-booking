@@ -22,6 +22,19 @@ export class HotelService {
 			this.rooms.push({ id: (i + 1), location: "EG - terasse - no smoker", state: status.free })
 		}
 		this.freeRooms = this.rooms;
+		this.setLocation();
+	}
+	private setLocation() {
+		let i: number = 0;
+		for (i = 0; i < this.rooms.length; i++) {
+			if (i < 10) {
+				this.rooms[i].location = "EG";
+			} else if (i >= 10 && i < 20) {
+				this.rooms[i].location = "1st Floor";
+			} else {
+				this.rooms[i].location = "2nd Floor";
+			}
+		}
 	}
 
 	//sets a random amout of rooms to booked
@@ -38,7 +51,6 @@ export class HotelService {
 				this.rooms[i].state = status.booked;
 				this.freeRooms.filter(r => r !== this.rooms[i]);
 			}
-			console.log(`room nr: ${this.rooms[i].id} created. State: ${this.rooms[i].state}`);
 			this.updateFreeRooms();
 		}
 	}
@@ -115,6 +127,7 @@ export class HotelService {
 		}
 	}
 
+	//changes a specified room from free to booked and vice versa
 	switchRoomState(id: number): void {
 		if (this.rooms[id - 1]) {
 			if (this.rooms[id - 1].state === status.booked) {
